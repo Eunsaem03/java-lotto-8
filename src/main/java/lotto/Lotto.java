@@ -4,6 +4,11 @@ import java.util.List;
 import lotto.domain.NumberGenerator;
 
 public class Lotto {
+
+    private static final int MIN = 1;
+    private static final int MAX = 45;
+    private static final int MAX_LOTTO_COUNT = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,8 +21,28 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        if (numbers.size() != MAX_LOTTO_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 " + MAX_LOTTO_COUNT + "개여야 합니다.");
+        }
+        validateDuplicateNumber(numbers);
+        validateRange(numbers);
+    }
+
+    private static void validateRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < MIN || number > MAX) {
+                throw new IllegalArgumentException("[ERROR] " + MIN + "~" + MAX + "범위 내의 숫자를 입력해야 합니다.");
+            }
+        }
+    }
+
+    private void validateDuplicateNumber(List<Integer> numbers) {
+        long uniqueNumber = numbers.stream()
+                .distinct()
+                .count();
+
+        if (uniqueNumber != MAX_LOTTO_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자 없이 입력해야 합니다.");
         }
     }
 
@@ -33,5 +58,9 @@ public class Lotto {
         }
 
         return count;
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
     }
 }
