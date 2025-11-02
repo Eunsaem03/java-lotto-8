@@ -41,44 +41,6 @@ public class InputValidator {
         }
     }
 
-    private static void validateMaxCount(List<Integer> numbers) {
-        if (numbers.size() != MAX_LOTTO_COUNT) {
-            throw new IllegalArgumentException("[ERROR] " + MAX_LOTTO_COUNT + "개의 숫자를 입력해야 합니다.");
-        }
-    }
-
-    private static void validateRange(List<Integer> numbers) {
-        for (int number : numbers) {
-            if (number < MIN || number > MAX) {
-                throw new IllegalArgumentException("[ERROR] " + MIN + "~" + MAX + "범위 내의 숫자를 입력해야 합니다.");
-            }
-        }
-    }
-
-    private static void validateRangeBonus(int bonusNumber) {
-        if (bonusNumber < MIN || bonusNumber > MAX) {
-            throw new IllegalArgumentException("[ERROR] " + MIN + "~" + MAX + "범위 내의 숫자를 입력해야 합니다.");
-        }
-    }
-
-    private static void validateDuplicateNumber(List<Integer> numbers) {
-        long uniqueNumber = numbers.stream()
-                .distinct()
-                .count();
-
-        if (uniqueNumber != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자 없이 입력해야 합니다.");
-        }
-    }
-
-    private static void validateDuplicateBonus(List<Integer> numbers, int bonusNumber) {
-        for (int number : numbers) {
-            if (number == bonusNumber) {
-                throw new IllegalArgumentException("[ERROR] 중복된 숫자 없이 입력해야 합니다.");
-            }
-        }
-    }
-
     private static void validate(String input) {
         InputValidator.validateNotBlank(input);
         InputValidator.validateIsNumber(input);
@@ -92,17 +54,5 @@ public class InputValidator {
     public static void validateWinningNumberString(String input) {
         InputValidator.validateNotBlank(input);
         InputValidator.validateWinningNumberFormat(input);
-    }
-
-    public static void validateWinningNumber(List<Integer> numbers) {
-        InputValidator.validateMaxCount(numbers);
-        InputValidator.validateRange(numbers);
-        InputValidator.validateDuplicateNumber(numbers);
-    }
-
-    public static void validateBonusNumber(String input, List<Integer> numbers, int bonusNumber) {
-        InputValidator.validate(input);
-        InputValidator.validateRangeBonus(bonusNumber);
-        InputValidator.validateDuplicateBonus(numbers, bonusNumber);
     }
 }
