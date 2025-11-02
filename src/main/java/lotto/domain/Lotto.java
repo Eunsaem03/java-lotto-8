@@ -23,8 +23,8 @@ public class Lotto {
         if (numbers.size() != MAX_LOTTO_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 " + MAX_LOTTO_COUNT + "개여야 합니다.");
         }
-        validateDuplicateNumber(numbers);
-        validateRange(numbers);
+        Lotto.validateDuplicateNumber(numbers);
+        Lotto.validateRange(numbers);
     }
 
     private static void validateRange(List<Integer> numbers) {
@@ -35,7 +35,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicateNumber(List<Integer> numbers) {
+    private static void validateDuplicateNumber(List<Integer> numbers) {
         long uniqueNumber = numbers.stream()
                 .distinct()
                 .count();
@@ -49,10 +49,10 @@ public class Lotto {
         return numbers;
     }
 
-    public int matchCount(Lotto PurchaseNumber) {
+    public int matchCount(Lotto purchaseNumber) {
         int count = 0;
 
-        for (Integer number : PurchaseNumber.numbers) {
+        for (Integer number : purchaseNumber.numbers) {
             if (this.numbers.contains(number)) count++;
         }
 
