@@ -27,8 +27,13 @@ public class InputValidator {
         }
     }
 
-    private static void validate(String input) {
+    public static void validate(String input) {
         InputValidator.validateNotBlank(input);
         InputValidator.validateIsNumber(input);
+    }
+
+    public static void validateWinningNumbers(String input) {
+        validateNotBlank(input);
+        validateWinningNumberFormat(input);
     }
 }
