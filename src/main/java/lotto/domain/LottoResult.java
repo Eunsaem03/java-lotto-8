@@ -25,4 +25,8 @@ public class LottoResult {
     public boolean isBonusNumberMatched() {
         return bonusNumberMatched;
     }
+
+    public Rank toRank() {
+        return Rank.of(matchCount, bonusNumberMatched);
+    }
 }
