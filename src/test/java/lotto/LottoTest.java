@@ -22,5 +22,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @Test
+    @DisplayName("1~45 범위 외의 숫자를 입력하면 예외가 발생한다.")
+    void 범위_외의_숫자를_입력하면_예외가_발생한다() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 3, 5, 6, 7, 60)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
