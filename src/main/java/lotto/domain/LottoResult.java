@@ -16,14 +16,6 @@ public class LottoResult {
         return lotto;
     }
 
-    public int getMatchCount() {
-        return matchCount;
-    }
-
-    public boolean isBonusNumberMatched() {
-        return bonusNumberMatched;
-    }
-
     public Rank toRank() {
         return Rank.of(matchCount, bonusNumberMatched);
     }

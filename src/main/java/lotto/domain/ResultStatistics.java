@@ -24,10 +24,6 @@ public class ResultStatistics {
         return counts.get(rank);
     }
 
-    public long totalPrize() {
-        return totalPrize;
-    }
-
     public double calculateYield(int purchaseAmount) {
         if (purchaseAmount == 0) {
             return 0.0;
