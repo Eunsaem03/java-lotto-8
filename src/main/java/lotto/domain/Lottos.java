@@ -18,6 +18,10 @@ public class Lottos {
         return lottos;
     }
 
+    public int size() {
+        return lottos.size();
+    }
+
     public List<LottoResult> evaluate(WinningNumbers winningNumbers) {
         List<LottoResult> results = new ArrayList<>();
 
