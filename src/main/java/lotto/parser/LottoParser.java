@@ -2,7 +2,6 @@ package lotto.parser;
 
 import java.util.List;
 import java.util.Arrays;
-import lotto.Lotto;
 
 public class LottoParser {
 
